@@ -37,8 +37,8 @@ const { menu = [], starterMenu: starters = [] } = restaurant;
 console.log(menu, starters);
 
 // Mutating variables
-let a = 111;
-let b = 999;
+let a = 100;
+let b = 777;
 const obj = {
     a: 23,
     b: 7,
