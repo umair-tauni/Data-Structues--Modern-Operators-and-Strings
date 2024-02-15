@@ -35,51 +35,46 @@ const restaurant = {
 
     orderPasta: function(ing1, ing2, ing3){
         console.log(`Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`);
+    },
+
+    orderPizza: function (mainIngredient, ...otherIngredients) {
+        console.log(mainIngredient);
+        console.log(otherIngredients);
     }
 };
 
-const arr = [7, 8, 9];
-const badNewArray = [1, 2, arr[0], arr[1], arr[2]];
-console.log(badNewArray);
+// 1) Destructuring
 
-const newArr = [1, 2, ...arr];
-console.log(newArr);
+// SPREAD, because on Right side of =
+const arr = [1, 2, ...[3, 4]];
 
-console.log(...newArr);
+// REST, because on Left side of =
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+console.log(a, b, others);
 
-const mainMenu = [...restaurant.mainMenu, 'Gnocci'];
-console.log(mainMenu);
+const [pizza, , risotto, ...otherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(pizza, risotto, otherFood);
 
-// Copy array
-const mainMenuCopy = [...restaurant.mainMenu];
+// Objects
+const {sat, ...weekdays} = restaurant.openingHours;
+console.log(weekdays);
+console.log(sat);
 
-// Join 2 arrays
-const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
-console.log(menu);
+// 2) Functions
+const add = function(...numbers){
+    let sum = 0;
+    for (let i = 0; i < numbers.length; i++) {
+        sum += numbers[i];
+    }
+    console.log(sum);
+}
 
-// Iterables: arrays, strings, maps, sets. Not objects
+add(2, 3);
+add(5, 3, 7, 2);
+add(8, 2, 5, 3, 2, 1, 4);
 
-const str = 'Umair';
-const letters = [...str, '', 'T.'];
-console.log(letters);
-console.log(...str);
+const x = [23, 5, 7];
+add(...x);
 
-// Real-world example
-// const ingredients = [prompt('Let\'s make pasta! Ingredient 1?'), prompt('Ingredient 2?'), prompt ('Ingredient 3?')];
-// console.log(ingredients);
-
-// restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
-// restaurant.orderPasta(...ingredients);
-
-//Objects
-const newRestaurant = {
-    foundedIn: 1998,
-    ...restaurant,
-    founder: 'Guiseppe'
-};
-console.log(newRestaurant);
-
-const restaurantCopy = {...restaurant};
-restaurantCopy.name = 'Ristorante Roma';
-console.log(restaurantCopy.name)
-console.log(restaurant.name);
+restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
+restaurant.orderPizza('mushrooms');
