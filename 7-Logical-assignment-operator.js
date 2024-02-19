@@ -1,5 +1,3 @@
-
-
 const restaurant = {
     name: 'Classico Italiano',
     location: 'Via Angelo Tavanti 23, Fiernze, Italy',
@@ -43,10 +41,32 @@ const restaurant = {
     }
 };
 
-restaurant.numGuests = 0;
-const guests = restaurant.numGuests || 10;
-console.log(guests);
+const rest1 = {
+    name: 'Capri',
+    numGuests: 20,
+}
 
-// Nullish: null and undefined (Not 0 or '')
-const guestCorrect = restaurant.numGuests ?? 10;
-console.log(guestCorrect);
+const rest2 = {
+    name: 'La Piazza',
+    owner: 'Rossi',
+}
+
+// OR assignment operator
+// rest1.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest2.numGuests || 10;
+// rest1.numGuests ||= 10;
+// rest2.numGuests ||= 10;
+
+// nullish assignment operator (null or undefined)
+rest1.numGuests ??= 10;
+rest2.numGuests ??= 10;
+
+// AND assignment operator
+// rest1.owner = rest1.owner && '<ANONYMOUS>';
+// rest2.owner = rest2.owner && '<ANONYMOUS>';
+rest1.owner &&= '<ANONYMOUS>';
+rest2.owner &&= '<ANONYMOUS>';
+
+console.log(rest1);
+console.log(rest2);
+
