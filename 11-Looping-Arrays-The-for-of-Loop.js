@@ -1,4 +1,4 @@
-'use strict';
+
 
 const restaurant = {
     name: 'Classico Italiano',
@@ -41,34 +41,23 @@ const restaurant = {
         console.log(mainIngredient);
         console.log(otherIngredients);
     }
-};
-
-const rest1 = {
-    name: 'Capri',
-    numGuests: 20,
 }
 
-const rest2 = {
-    name: 'La Piazza',
-    owner: 'Rossi',
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu) {
+    console.log(item);
 }
 
-// OR assignment operator
-// rest1.numGuests = rest1.numGuests || 10;
-// rest2.numGuests = rest2.numGuests || 10;
-// rest1.numGuests ||= 10;
-// rest2.numGuests ||= 10;
+for (const item of menu.entries()) {
+    // console.log(item);
+    console.log(`${item[0] + 1}: ${item[1]}`);
+}
 
-// nullish assignment operator (null or undefined)
-rest1.numGuests ??= 10;
-rest2.numGuests ??= 10;
+for (const [i, el] of menu.entries()) {
+    console.log(`${i + 1}: ${el}`);
+}
 
-// AND assignment operator
-// rest1.owner = rest1.owner && '<ANONYMOUS>';
-// rest2.owner = rest2.owner && '<ANONYMOUS>';
-rest1.owner &&= '<ANONYMOUS>';
-rest2.owner &&= '<ANONYMOUS>';
+console.log(menu.entries());
 
-console.log(rest1);
-console.log(rest2);
-
+console.log([...menu.entries()]);
